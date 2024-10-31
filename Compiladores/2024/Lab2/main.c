@@ -32,16 +32,25 @@ int main (int argc, char  **argv){
     Buffer=allocate_buffer();
 
     caracter = fgetc(arquivo);
-    while( caracter!='\n'  && caracter!= EOF && Buffer->nextChar < 256 ){
+    while( caracter!= EOF  ){
+        // Buffer=allocate_buffer();
+        char string_aux[256];
+        int i=0;
 
-        Buffer->carac[Buffer->nextChar]=caracter;
+        while(caracter!='\n'  && i < 256 && caracter != EOF  ){
+            string_aux[i]=caracter;
+            caracter = fgetc(arquivo);
+            i++;
+        }
+        string_aux[i]='\0';
+        Buffer->linha++;
+        get_next_char(string_aux,Buffer);
+        
+        
 
+        // deallocate_buffer(Buffer);
         caracter = fgetc(arquivo);
-        Buffer->nextChar++;
-
     }
-    Buffer->carac[Buffer->nextChar]='\0';
-    printf("%s",Buffer->carac);
 
 
     deallocate_buffer(Buffer);
