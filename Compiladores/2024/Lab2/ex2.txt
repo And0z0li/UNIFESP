@@ -1,0 +1,9 @@
+Grande parte de nossos dados é armazenada em arquivos de texto (também conhecidos como
+plain text ou texto simples).  Num arquivo de texto, os bytes representam caracteres.  
+Suporemos que todos os nossos arquivos usam codificação UTF-8 e portanto 
+cada caractere é representado por 1, 2, 3, ou 4 bytes consecutivos. 
+(Convém lembrar que certos bytes não fazem parte do código de nenhum 
+caractere; é o caso dos bytes no intervalo 248 . . 255, por exemplo.)  
+Se cada caractere do 
+arquivo é representado por apenas 1 byte — ou seja, se todos os 
+caracteres são ASCII — temos um arquivo ASCII.
