@@ -2,7 +2,7 @@
 
 T_Buff *allocate_buffer(){
     T_Buff *buffer = malloc(sizeof(T_Buff));
-    buffer->carac  = malloc(256*sizeof(char));
+    buffer->carac  = malloc(maxTam*sizeof(char));
     buffer->nextChar = 0;
     buffer->linha = 0;
     return buffer ;
