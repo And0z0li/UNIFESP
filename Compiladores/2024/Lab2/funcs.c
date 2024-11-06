@@ -15,7 +15,9 @@ void deallocate_buffer(T_Buff *buffer){
 } 
 void get_next_char(char string[],T_Buff *buffer ){
     buffer->carac=string;
-    printf("linha : %d\n%s\n",buffer->linha,buffer->carac);
+
+    printf("char : %c\n",buffer->carac[buffer->nextChar]);
+    buffer->nextChar++;
 }
 
 

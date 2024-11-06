@@ -30,11 +30,14 @@ int main (int argc, char  **argv){
     printf("\nargv - %s\n",argv[1]);
 
     Buffer=allocate_buffer();
-
+    char string_aux[256];
     caracter = fgetc(arquivo);
+    int scanfValue=0;
+    bool computacao=true;
+
     while( caracter!= EOF  ){
         // Buffer=allocate_buffer();
-        char string_aux[256];
+        
         int i=0;
 
         while(caracter!='\n'  && i < 256 && caracter != EOF  ){
@@ -44,7 +47,16 @@ int main (int argc, char  **argv){
         }
         string_aux[i]='\0';
         Buffer->linha++;
-        get_next_char(string_aux,Buffer);
+
+        while( computacao &&  string_aux[Buffer->nextChar] != '\0' && Buffer->nextChar < 256){
+            printf("digite 1 para um novo caracter, 2 para sair.\n");
+            scanf("%d",&scanfValue);
+            if(scanfValue <= 1)
+                get_next_char(string_aux,Buffer);
+            else 
+                computacao = false;
+        }
+        Buffer->nextChar=0;
         
         
 

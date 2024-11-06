@@ -1,4 +1,4 @@
-Grande parte de nossos dados é armazenada em arquivos de texto (também conhecidos como
+Grande parte de nossos dados 
 plain text ou texto simples).  Num arquivo de texto, os bytes representam caracteres.  
 Suporemos que todos os nossos arquivos usam codificação UTF-8 e portanto 
 cada caractere é representado por 1, 2, 3, ou 4 bytes consecutivos. 
