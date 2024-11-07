@@ -34,6 +34,15 @@ bool isLetter(char strg[]){
     return YesssNooo ;
 }
 
+bool isReservedWord( char str[], char tokens[][maxTam]) {
+    for (int i = 0; i < numTokens; i++) {
+        if (strcmp(tokens[i], str) == 0) {
+            return true;  // Palavra reservada encontrada
+        }
+    }
+    return false;  // Não é uma palavra reservada
+}
+
 void replace_print( char carac[]){
     int i=0;
    

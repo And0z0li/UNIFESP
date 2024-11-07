@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 #define maxTam  64
+#define numTokens 33
 
 
 
@@ -17,3 +18,4 @@ void deallocate_buffer(T_Buff *buffer);
 void replace_print(char carac[]);
 void get_next_char(char string[],T_Buff *buffer );
 bool isLetter(char strg[]);
+bool isReservedWord( char str[], char tokens[][maxTam]);

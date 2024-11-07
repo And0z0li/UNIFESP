@@ -1,5 +1,14 @@
 /*
 
+auto	else	long	switch
+break	enum	register	typedef
+case	extern	return	union
+char	float	short	unsigned
+const	for	signed	void
+continue	goto	sizeof	volatile
+default	if	static	while
+do	int	struct	_Packed
+double
 
 
  gcc -o main main.c funcs.c
@@ -13,6 +22,19 @@
 int main (int argc, char  **argv){
     int i,tam_BUFFER;
     char string_aux[maxTam],caracter;
+
+    char tokens[numTokens][maxTam] = {
+        "auto", "else", "long", "switch",
+        "break", "enum", "register", "typedef",
+        "case", "extern", "return", "union",
+        "char", "float", "short", "unsigned",
+        "const", "for", "signed", "void",
+        "continue", "goto", "sizeof", "volatile",
+        "default", "if", "static", "while",
+        "do", "int", "struct", "_Packed",
+        "double"
+    };
+
     T_Buff *Buffer;
 	if(argc != 2){
 		printf("Numero de parametros invalido!\n");
@@ -46,7 +68,8 @@ int main (int argc, char  **argv){
         Buffer->linha++;
 
         if(isLetter(string_aux) && string_aux[0] != '\0')
-            printf("'%s'\n",string_aux);
+            if( isReservedWord( string_aux,  tokens) )
+                printf("'%s'\n",string_aux);
 
     }while( caracter!= EOF );
 
