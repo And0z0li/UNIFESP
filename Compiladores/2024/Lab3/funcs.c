@@ -20,6 +20,19 @@ void get_next_char(char string[],T_Buff *buffer ){
     buffer->nextChar++;
 }
 
+bool isLetter(char strg[]){
+    bool YesssNooo = true;
+    int j=0;
+    while (strlen(strg) > j && strg[j] != '\0' && YesssNooo){
+        /* code */
+        if((strg[j] >= 65 && strg[j] <= 90) || (strg[j] >= 97 && strg[j] <= 122))
+            YesssNooo= true;
+        else    
+            YesssNooo=false;
+        j++;
+    }
+    return YesssNooo ;
+}
 
 void replace_print( char carac[]){
     int i=0;

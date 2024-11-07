@@ -12,7 +12,7 @@
 
 int main (int argc, char  **argv){
     int i,tam_BUFFER;
-    char caracter;
+    char string_aux[maxTam],caracter;
     T_Buff *Buffer;
 	if(argc != 2){
 		printf("Numero de parametros invalido!\n");
@@ -30,14 +30,10 @@ int main (int argc, char  **argv){
     printf("\nargv - %s\n",argv[1]);
 
     Buffer=allocate_buffer();
-    char string_aux[maxTam];
-    caracter = fgetc(arquivo);
-    int scanfValue=0;
-    bool computacao=true;
+    
 
-    while( caracter!= EOF ){
-        // Buffer=allocate_buffer();
-        
+    do {
+        caracter = fgetc(arquivo);
         int i=0;
 
         while(caracter!='\n'  && i < maxTam && caracter != EOF && caracter != ' ' ){
@@ -45,27 +41,14 @@ int main (int argc, char  **argv){
             caracter = fgetc(arquivo);
             i++;
         }
+
         string_aux[i]='\0';
         Buffer->linha++;
-        if(caracter != '\0' )
-        printf("'%s'\t",string_aux);
-        
-        // while( computacao &&  string_aux[Buffer->nextChar] != '\0' && Buffer->nextChar < maxTam){
-        //     printf("digite 1 para um novo caracter, 2 para sair.\n");
-        //     scanf("%d",&scanfValue);
-        //     if(scanfValue <= 1)
-        //         get_next_char(string_aux,Buffer);
-        //     else 
-        //         computacao = false;
-        // }
-        // Buffer->nextChar=0;
-        
-        
 
-        // deallocate_buffer(Buffer);
-        caracter = fgetc(arquivo);
-    }
+        if(isLetter(string_aux) && string_aux[0] != '\0')
+            printf("'%s'\n",string_aux);
 
+    }while( caracter!= EOF );
 
     deallocate_buffer(Buffer);
     fclose(arquivo);

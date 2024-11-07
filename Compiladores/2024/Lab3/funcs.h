@@ -16,3 +16,4 @@ T_Buff *allocate_buffer();
 void deallocate_buffer(T_Buff *buffer);
 void replace_print(char carac[]);
 void get_next_char(char string[],T_Buff *buffer );
+bool isLetter(char strg[]);
