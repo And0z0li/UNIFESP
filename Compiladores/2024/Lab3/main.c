@@ -13,6 +13,8 @@ double
 
  gcc -o main main.c funcs.c
  valgrind --leak-check=yes ./main.exe  lexemas.c
+ Windows -> ./main.exe
+ linux   -> ./main
 
 */
 
@@ -65,11 +67,17 @@ int main (int argc, char  **argv){
         }
 
         string_aux[i]='\0';
-        Buffer->linha++;
+        if(caracter == '\n')
+            Buffer->linha++;
 
-        if(isLetter(string_aux) && string_aux[0] != '\0')
+        if(isLetter(string_aux) && string_aux[0] != '\0'){
             if( isReservedWord( string_aux,  tokens) )
-                printf("'%s'\n",string_aux);
+                //printf("kkk'%s -  linha %d'\n",string_aux,Buffer->linha);
+                montaTipoPrint(string_aux,string_aux,Buffer->linha);   
+            else
+                //printf("'%s -  linha %d'\n",string_aux,Buffer->linha);
+                montaTipoPrint(string_aux,"ID",Buffer->linha); 
+        }    
 
     }while( caracter!= EOF );
 

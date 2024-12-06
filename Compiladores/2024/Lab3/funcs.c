@@ -25,7 +25,7 @@ bool isLetter(char strg[]){
     int j=0;
     while (strlen(strg) > j && strg[j] != '\0' && YesssNooo){
         /* code */
-        if((strg[j] >= 65 && strg[j] <= 90) || (strg[j] >= 97 && strg[j] <= 122))
+        if((strg[j] >= 65 && strg[j] <= 90) || (strg[j] >= 97 && strg[j] <= 122) || strg[j]== 44 || strg[j]== 58 || strg[j]== 59)
             YesssNooo= true;
         else    
             YesssNooo=false;
@@ -55,4 +55,17 @@ void replace_print( char carac[]){
         printf("%c",UPPER);
         i++;
     }
+}
+
+void montaTipoPrint( char lexema[],char token[], int linha){
+    tipoPrint *print = malloc(sizeof(tipoPrint));
+    print->linha  = linha;
+    strcpy(print->lexema,lexema);
+    strcpy(print->token,token);
+    printaToken(print);
+
+    free(print);
+}
+void printaToken(tipoPrint  *token){
+    printf("Linha: %d, Lexema: %s, Token: %s\n",token->linha,token->lexema,token->token);
 }
