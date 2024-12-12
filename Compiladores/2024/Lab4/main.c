@@ -74,9 +74,14 @@ int main (int argc, char  **argv){
 
         if(isLetter(string_aux) && string_aux[0] != '\0'){
             if( isReservedWord( string_aux,  tokens) )
+
                 montaTipoPrint(string_aux,string_aux,Buffer->linha);   
             else
+
                 montaTipoPrint(string_aux,"ID",Buffer->linha); 
+        }else if (isNumber(string_aux) && string_aux[0] != '\0'){
+
+            montaTipoPrint(string_aux,"NUM",Buffer->linha); 
         }
         if(caracter == '\n')
             Buffer->linha++;
