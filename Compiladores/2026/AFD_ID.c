@@ -40,64 +40,65 @@ int main (int argc, char *argv[]){
     }
 
     FILE *arquivo = fopen(argv[1], "r");
+    FILE *saida = fopen("saida.txt", "w");
+
     int estados[3];
     int carac; 
     int estadoAtual = 0;
     estados[0] = 0;
 
-    char palavra[10];
+    char palavra[20];
     int aux_palavra=0;
     
     while ((carac = fgetc(arquivo)) != EOF) {
-
+       // printf("-%c-", carac);
+       
         switch (estadoAtual)
         {
         case 0 :
             if(isCarac(carac)){ 
-                estadoAtual=matriz[estadoAtual][1]; 
+                //printf("asccii - %d |",carac);
+                estadoAtual=matriz[estadoAtual][0]; 
                 palavra[aux_palavra]=carac;
+                palavra[aux_palavra+1]='\0';
                 aux_palavra++;
             }else 
-                estadoAtual=-1; 
+                estadoAtual=0; 
             break;
         case 1 :
-            if(isCarac(carac) || isNum(carac))
-                estadoAtual=matriz[estadoAtual][1]; 
-            else
+            if(isCarac(carac) || isNum(carac)){
+                //printf("asccii - %d |",carac);
+                estadoAtual=matriz[estadoAtual][1];
+                palavra[aux_palavra]=carac;
+                palavra[aux_palavra+1]='\0';
+                aux_palavra++; 
+            }else
                 estadoAtual=matriz[estadoAtual][2];
             break;
         case 2 :
             printf("%s \n", palavra);
+            fputs(" ID ",saida);
             memset(palavra, 0, sizeof(palavra));
+            aux_palavra=0;
+            estadoAtual=0; 
+            if(isCarac(carac) || isNum(carac)){
+                palavra[aux_palavra]=carac;
+                palavra[aux_palavra+1]='\0';
+                aux_palavra++;
+            }            
             break;
                 
         default:
-            printf("default : %c\n",carac);
+            //printf("default : %c\n",carac);
             break;
         }
+        if(!isCarac(carac) && !isNum(carac) )
+            fputc(carac,saida);
 
-        /*
-            if(isCarac(carac)){
-                palavra[aux_palavra]=carac;
-                aux_palavra++;
-
-            }else if (isNum(carac)){
-
-                if (aux_palavra != 0)
-                    printf("%s \n", palavra);
-                memset(palavra, 0, sizeof(palavra));
-                aux_palavra=0;
-                //printf("Numero\n");
-            }else{
-                if (aux_palavra != 0)
-                    printf("%s \n", palavra);
-                memset(palavra, 0, sizeof(palavra));
-                aux_palavra=0;
-            }
-        */
     }
 
     fclose(arquivo);
+    fclose(saida);
     return 0;
 
 }
