@@ -1,8 +1,15 @@
 
+/*
+    Execução:
+    
+    gcc AFD_ID.c -o AFD.exe
+    ./AFD.exe sort.txt 
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+
 
 bool  isNum(char carac){
 
