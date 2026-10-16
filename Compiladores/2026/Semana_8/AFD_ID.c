@@ -30,8 +30,18 @@ bool  isCarac(char carac){
 }
 
 void parser(){
-
+    char token[50];
+    //puxar token por token
+    //tokens();
     
+    //token = '\0' -> fim do arquivo
+    while (token != '\0'){
+
+
+
+
+        token = tokens();
+    }
 }
 
 
