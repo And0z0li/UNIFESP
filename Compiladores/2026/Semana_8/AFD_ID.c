@@ -28,7 +28,7 @@ bool  isCarac(char carac){
     else
         return false;  
 }
-
+/*
 void parser(){
     char token[50];
     //puxar token por token
@@ -42,7 +42,7 @@ void parser(){
 
         token = tokens();
     }
-}
+}*/
 
 
 const int matriz[3][3] = {
